@@ -44,7 +44,9 @@ function App() {
       <header>CS578 Fitness Tracker</header>
       <main>
         {!connected && (
-          <button onClick={connectToDevice}>Connect to Device</button>
+          <section>
+            <button onClick={connectToDevice}>Connect to Device</button>
+          </section>
         )}
         {connected && (
         <section>
