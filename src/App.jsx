@@ -12,14 +12,14 @@ function App() {
     try {
       const device = await navigator.bluetooth.requestDevice({
         filters: [{name: 'FitnessTracker'}],
-        optionalServices: ['180a'],
+        optionalServices: ['12345678-1234-1234-1234-1234567890ab'],
       });
 
       const server = await device.gatt.connect();
-      const service = await server.getPrimaryService('180a');
+      const service = await server.getPrimaryService('12345678-1234-1234-1234-1234567890ab');
       
-      const stepsChar = await service.getCharacteristic('2a53');
-      const heartRateChar = await service.getCharacteristic('2a37');
+      const stepsChar = await service.getCharacteristic('abcd1234-1a2b-3c4d-5e6f-abcdef123456');
+      const heartRateChar = await service.getCharacteristic('dcba4321-1a2b-3c4d-5e6f-abcdef654321');
 
       stepsChar.addEventListener('characteristicvaluechanged', (event) => {
         const value = event.target.value.getUint8(0);
